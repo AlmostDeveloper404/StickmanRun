@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace Main
 {
-
     public class UIManager : MonoBehaviour
     {
-        private PlayerShooting _playerShooting;
         [SerializeField] private Button _shootButton;
+
+        private PlayerShooting _playerShooting;
 
         [Inject]
         public void Construct(PlayerShooting playerShooting)
@@ -20,12 +20,12 @@ namespace Main
 
         private void OnEnable()
         {
-            _shootButton.onClick.AddListener(() => _playerShooting.Shoot());
+            _shootButton.onClick.AddListener(() => _playerShooting.Attack());
         }
 
         private void OnDisable()
         {
-            _shootButton.onClick.RemoveListener(() => _playerShooting.Shoot());
+            _shootButton.onClick.RemoveListener(() => _playerShooting.Attack());
         }
     }
 }

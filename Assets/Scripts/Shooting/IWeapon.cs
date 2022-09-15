@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Main
 {
-    public class Pistol : WeaponBase
+    public interface IWeapon
     {
-
+        void Attack();
     }
 }
+
 
