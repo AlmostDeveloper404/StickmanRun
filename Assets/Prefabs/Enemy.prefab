@@ -84,22 +84,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -80
+    limit: -40.960896
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 0
+    limit: 52.910736
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
-    limit: 0
+    limit: 16.988157
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 35.219467
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -364,8 +364,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 0
     bounciness: 0
@@ -555,9 +555,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.09359652
-  m_Height: 0.31198838
+  m_Height: 0.2489067
   m_Direction: 1
-  m_Center: {x: 0, y: 0.15599419, z: 0}
+  m_Center: {x: 0.0000001339402, y: 0.16791567, z: -0.0000000045211492}
 --- !u!54 &4772123886076956401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -601,8 +601,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 30
     bounciness: 0
@@ -776,8 +776,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 50
     bounciness: 0
@@ -951,8 +951,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 100
+    damper: 50
   m_Swing1Limit:
     limit: 10
     bounciness: 0
@@ -1062,8 +1062,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 0
     bounciness: 0
@@ -1177,6 +1177,37 @@ Transform:
   m_Father: {fileID: 2050053990377633635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5171993950210510652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6431033165316000843}
+  m_Layer: 0
+  m_Name: CentreOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6431033165316000843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171993950210510652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7725561760052170524}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5512576104614721081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,8 +1284,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.075494036
-  m_Center: {x: 0, y: 0.075494036, z: 0}
+  m_Radius: 0.2951623
+  m_Center: {x: 0.00000006594011, y: 0.2951618, z: 0.000000009174867}
 --- !u!54 &5700812306100565773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1396,9 +1427,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.09359648
-  m_Height: 0.31198826
+  m_Height: 0.2483621
   m_Direction: 1
-  m_Center: {x: 0, y: 0.15599413, z: 0}
+  m_Center: {x: -0.00000029679623, y: 0.16241026, z: -0.00000007655495}
 --- !u!54 &5743695607319082009
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1442,8 +1473,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 30
     bounciness: 0
@@ -1569,10 +1600,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.000000011521934
-  m_Height: 0.000000046087735
-  m_Direction: 0
-  m_Center: {x: -0.000000023043867, y: 0, z: 0}
+  m_Radius: 0.06
+  m_Height: 0.23298262
+  m_Direction: 1
+  m_Center: {x: 0.00000020914447, y: 0.124885656, z: -0.000000018978573}
 --- !u!54 &7103565122931671127
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1616,14 +1647,14 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
-    limit: 0
+    limit: 16.98816
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 35.21947
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1659,7 +1690,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7491699140431437935}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1668,7 +1699,7 @@ Transform:
   - {fileID: 472274899276029905}
   m_Father: {fileID: 7725561760052170524}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &4205272251027579055
 Animator:
   serializedVersion: 4
@@ -1722,6 +1753,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7835150647857232597}
+  - {fileID: 6431033165316000843}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1804,7 +1836,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.3306775
+  m_Radius: 0.48
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -1820,6 +1852,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808d997f33b396c4cbf22fdf70d3f8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _centreOfMass: {fileID: 6431033165316000843}
+  _speed: 3
+  _rotationSpeed: 5
+  _animator: {fileID: 4205272251027579055}
 --- !u!1 &8378400031708417722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,8 +1948,8 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 1000
+    damper: 50
   m_Swing1Limit:
     limit: 50
     bounciness: 0

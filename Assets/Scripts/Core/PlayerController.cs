@@ -19,12 +19,20 @@ namespace Main
 
         private FixedJoystick _fixedJoystick;
 
-        private PointerEventData _pointerEventData;
-
         [Inject]
         public void Construct(FixedJoystick fixedJoystick)
         {
             _fixedJoystick = fixedJoystick;
+        }
+
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            
         }
 
         private void Update()
@@ -35,8 +43,6 @@ namespace Main
 
         private void MoveAnimation()
         {
-
-
             _animator.SetFloat(Animations.HorizontalValue, _fixedJoystick.Horizontal);
         }
 

@@ -2,7 +2,8 @@
     "name": "Guns",
     "rootNamespace": "",
     "references": [
-        "GUID:1271c9f20428b3246a2f88a0c6ea77aa"
+        "GUID:469c77af784719a409adf61a543b0ef9",
+        "GUID:c300309d0763fac47850f1a884189aa0"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

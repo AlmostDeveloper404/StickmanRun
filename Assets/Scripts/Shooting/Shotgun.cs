@@ -6,12 +6,20 @@ namespace Main
 {
     public class Shotgun : IWeapon
     {
-        public GameObject _bulletPref { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        private ObjectPool<Bullet> _bullets;
 
+        private Transform _firePoint;
+
+        public Shotgun(GunsInfo gunsInfo, Transform firePoint)
+        {
+            _bullets = new ObjectPool<Bullet>(gunsInfo.BulletPref);
+            _firePoint = firePoint;
+        }
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Shotgun");
         }
     }
+    
 }
 

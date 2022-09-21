@@ -2,10 +2,9 @@
     "name": "Installers",
     "rootNamespace": "",
     "references": [
-        "GUID:1271c9f20428b3246a2f88a0c6ea77aa",
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:c24168fb1796d0f49912ae4992827dac",
-        "GUID:a15f6d06f91af6f4d8ea7e9dce77bebc"
+        "GUID:469c77af784719a409adf61a543b0ef9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

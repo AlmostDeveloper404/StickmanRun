@@ -8,7 +8,7 @@ namespace Main
     {
         public void Attack()
         {
-            Debug.Log("Raffle");
+            
         }
     }
 }

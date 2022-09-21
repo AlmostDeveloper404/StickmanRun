@@ -1,8 +1,9 @@
 {
-    "name": "UI",
+    "name": "Core",
     "rootNamespace": "",
     "references": [
-        "GUID:a15f6d06f91af6f4d8ea7e9dce77bebc"
+        "GUID:c24168fb1796d0f49912ae4992827dac",
+        "GUID:c300309d0763fac47850f1a884189aa0"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

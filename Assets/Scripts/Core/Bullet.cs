@@ -3,6 +3,7 @@ using System;
 
 namespace Main
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour, IPoolable<Bullet>
     {
         private Action<Bullet> _returnToPull;
@@ -30,9 +31,12 @@ namespace Main
 
         void OnTriggerEnter(Collider collider)
         {
-            if (collider.GetComponent<Enemy>())
+            ITakeDamage damagable = collider.GetComponent<ITakeDamage>();
+
+            if (damagable as MonoBehaviour)
             {
                 gameObject.SetActive(false);
+                damagable.TakeDamage();
             }
         }
     }
