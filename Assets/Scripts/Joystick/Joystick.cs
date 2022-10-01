@@ -75,7 +75,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void LerpHandleOnDrag()
     {
-        Debug.Log("Yep");
         input = Vector2.Lerp(input, _currentDragVector, Time.deltaTime * 10f);
         handle.anchoredPosition = Vector2.Lerp(handle.anchoredPosition, _currentHandlePos, Time.deltaTime * 10f);
     }

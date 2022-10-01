@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4000012940838486}
   - component: {fileID: 33000010981296042}
   - component: {fileID: 23000011688723482}
+  - component: {fileID: -4636391744257336501}
   m_Layer: 0
   m_Name: gun_e01
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fbed4d165caf8f24e9a0b5c9f1a39885, type: 2}
+  - {fileID: 2100000, guid: 8cc9f82b5cdc0f0478a77b47110e3742, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,6 +85,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4636391744257336501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012186140596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1000013909336342
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +164,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fbed4d165caf8f24e9a0b5c9f1a39885, type: 2}
+  - {fileID: 2100000, guid: 8cc9f82b5cdc0f0478a77b47110e3742, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

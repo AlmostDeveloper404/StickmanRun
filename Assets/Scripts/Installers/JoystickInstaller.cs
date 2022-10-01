@@ -5,11 +5,11 @@ namespace Main
 {
     public class JoystickInstaller : MonoInstaller
     {
-        [SerializeField] private FixedJoystick _fixedJoystick;
+        [SerializeField] private DynamicJoystick _fixedJoystick;
 
         public override void InstallBindings()
         {
-            Container.Bind<FixedJoystick>().FromInstance(_fixedJoystick);
+            Container.Bind<DynamicJoystick>().FromInstance(_fixedJoystick);
         }
     }
 }

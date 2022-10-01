@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Main
@@ -8,6 +6,9 @@ namespace Main
     {
         public static readonly int AttackHash = Animator.StringToHash("Attack");
         public static readonly int HorizontalValue = Animator.StringToHash("DirectionVector");
+        public static readonly int Death = Animator.StringToHash("Death");
+        public static readonly int GameOver = Animator.StringToHash("GameOver");
+        public static readonly int StartGame = Animator.StringToHash("StartGame");
     }
 }
 

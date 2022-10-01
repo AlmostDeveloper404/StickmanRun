@@ -5,13 +5,11 @@ namespace Main
 {
     public class PlayerInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _playerController;
-        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private PlayerController _playerController;
         public override void InstallBindings()
         {
-            var player = Container.InstantiatePrefab(_playerController, _spawnPoint.position, Quaternion.identity, null);
-            Container.Bind<PlayerController>().FromInstance(player.GetComponent<PlayerController>()).AsSingle().NonLazy();
-            Container.Bind<PlayerShooting>().FromInstance(player.GetComponent<PlayerShooting>()).AsSingle().NonLazy();
+            Container.Bind<PlayerController>().FromInstance(_playerController).AsSingle().NonLazy();
+            Container.Bind<PlayerShooting>().FromInstance(_playerController.GetComponent<PlayerShooting>()).AsSingle().NonLazy();
         }
     }
 }

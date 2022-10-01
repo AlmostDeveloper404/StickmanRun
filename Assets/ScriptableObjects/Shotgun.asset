@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715ef01271742a44689d9aa48ef18696, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
+  GunSprite: {fileID: 0}
+  GunPref: {fileID: 1000013777105188, guid: 5fb82b2a4d241b541a3d534eb88ac452, type: 3}
   BulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
-  GunPref: {fileID: 1000012186140596, guid: 600f21b73dd1157489438cd9874ab86c, type: 3}
   TimeBetweenShots: 0
   Name: Shotgun
   Description: 

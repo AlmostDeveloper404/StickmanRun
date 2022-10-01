@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using Zenject;
+using UniRx.Triggers;
+using UniRx;
 
 namespace Main
 {
@@ -10,13 +12,19 @@ namespace Main
         private Action<StraightForwardEnemy> _returnToPull;
 
         private PlayerController _playerController;
-        private CapsuleCollider _capsuleCollider;
 
-        [SerializeField] private Transform _centreOfMass;
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationSpeed;
 
+        private float _normalSpeed;
+        private float _normalRotation;
+
         [SerializeField] private Animator _animator;
+        [SerializeField] private LayerMask _playerLayerMask;
+        [SerializeField] private Collider _checkForKickCollider;
+
+        private CompositeDisposable _updateDisposable = new CompositeDisposable();
+        private CompositeDisposable _playerCheckTrigger = new CompositeDisposable();
 
         [Inject]
         public void Construct(PlayerController player)
@@ -26,12 +34,56 @@ namespace Main
 
         private void Start()
         {
-            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _checkForKickCollider.OnTriggerEnterAsObservable().Where(t => t.gameObject.layer == LayerMask.NameToLayer("Player")).Subscribe(_ => Kick()).AddTo(_playerCheckTrigger);
         }
 
-        private void Update()
+        private void OnEnable()
+        {
+            GameManager.OnGameStarted += StartGame;
+            GameManager.OnStatedPreporations += StartPreporations;
+            GameManager.OnGameOver += GameOver;
+            Observable.EveryUpdate().Subscribe(_ => CheckUpdate()).AddTo(_updateDisposable);
+        }
+
+
+        private void OnDisable()
+        {
+            GameManager.OnGameStarted -= StartGame;
+            GameManager.OnGameOver -= GameOver;
+            GameManager.OnStatedPreporations -= StartPreporations;
+            _updateDisposable?.Clear();
+        }
+        private void StartPreporations()
+        {
+            _normalSpeed = _speed;
+            _normalRotation = _rotationSpeed;
+
+            _speed = 0;
+            _rotationSpeed = 0;
+        }
+
+        private void StartGame()
+        {
+            _speed = _normalSpeed;
+            _rotationSpeed = _normalRotation;
+            _animator.SetTrigger(Animations.StartGame);
+        }
+
+        private void CheckUpdate()
         {
             MoveTowardsPlayer();
+        }
+
+        private void Kick()
+        {
+            _playerCheckTrigger?.Clear();
+            GameManager.OnGameOver -= GameOver;
+
+            _speed = 0;
+            _rotationSpeed = 0;
+
+            _animator.SetTrigger(Animations.AttackHash);
+            GameManager.ChangeGameState(GameState.GameOver);
         }
 
         private void MoveTowardsPlayer()
@@ -65,20 +117,16 @@ namespace Main
         {
             _animator.enabled = false;
 
-            Collider[] collider = Physics.OverlapSphere(_centreOfMass.position, 5f);
-
-            foreach (Collider item in collider)
-            {
-                Rigidbody rigidbody = item.GetComponent<Rigidbody>();
-                if (rigidbody)
-                {
-                    rigidbody.AddExplosionForce(50f, _centreOfMass.position, 5f);
-                }
-            }
-
-            _capsuleCollider.enabled = false;
+            _playerCheckTrigger?.Clear();
             _speed = 0;
             _rotationSpeed = 0;
+        }
+
+        private void GameOver()
+        {
+            _speed = 0;
+            _rotationSpeed = 0;
+            _animator.SetTrigger(Animations.GameOver);
         }
     }
 }

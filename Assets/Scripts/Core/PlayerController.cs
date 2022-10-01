@@ -1,38 +1,50 @@
-using System.Linq;
 using UnityEngine;
-using System.Collections.Generic;
 using Zenject;
-using UnityEngine.EventSystems;
 
 namespace Main
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _speed;
-        [SerializeField] private float _rotationSencitivity;
+
+        private float _playerSpeed;
 
 
         [SerializeField] private float _maxXPos = 2.5f;
-        [SerializeField] private float _rotationLerpSpeed;
-
         [SerializeField] private Animator _animator;
 
-        private FixedJoystick _fixedJoystick;
+        private DynamicJoystick _fixedJoystick;
 
         [Inject]
-        public void Construct(FixedJoystick fixedJoystick)
+        public void Construct(DynamicJoystick fixedJoystick)
         {
             _fixedJoystick = fixedJoystick;
         }
 
         private void OnEnable()
         {
-            
+            GameManager.OnGameOver += GameOver;
+            GameManager.OnStatedPreporations += StartPreporations;
+            GameManager.OnGameStarted += StartGame;
+        }
+
+        private void StartGame()
+        {
+            _speed = _playerSpeed;
+            _animator.SetTrigger(Animations.StartGame);
+        }
+
+        private void StartPreporations()
+        {
+            _playerSpeed = _speed;
+            _speed = 0;
         }
 
         private void OnDisable()
         {
-            
+            GameManager.OnGameOver -= GameOver;
+            GameManager.OnStatedPreporations -= StartPreporations;
+            GameManager.OnGameStarted -= StartGame;
         }
 
         private void Update()
@@ -54,6 +66,13 @@ namespace Main
             nextPosition.x = Mathf.Clamp(nextPosition.x, -_maxXPos, _maxXPos);
 
             transform.position = nextPosition;
+        }
+
+        private void GameOver()
+        {
+            _animator.applyRootMotion = true;
+            _speed = 0;
+            _animator.SetTrigger(Animations.Death);
         }
     }
 }

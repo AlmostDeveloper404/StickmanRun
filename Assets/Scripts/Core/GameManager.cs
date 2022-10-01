@@ -1,20 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
 
 namespace Main
 {
     public enum GameState { Preporations, StartGame, StartGameOverCatScene, GameOver }
 
+    
     public static class GameManager
     {
-        private static event Action OnGameOver;
-        private static event Action OnGameStarted;
-        private static event Action OnStatedPreporations;
-        private static event Action OnGameOverCutScene;
+        public static event Action OnGameOver;
+        public static event Action OnGameStarted;
+        public static event Action OnStatedPreporations;
+        public static event Action OnGameOverCutScene;
 
 
         public static void ChangeGameState(GameState gameState)

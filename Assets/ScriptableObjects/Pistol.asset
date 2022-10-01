@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715ef01271742a44689d9aa48ef18696, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  BulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
+  GunSprite: {fileID: 21300000, guid: d6d4c48ddb2ab104cbebb634aca9edb1, type: 3}
   GunPref: {fileID: 1000014042454154, guid: f86341e2283955442b814653072ad409, type: 3}
+  BulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   TimeBetweenShots: 0.2
   Name: Pistol
   Description: Non-automatic pistol
