@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Zenject;
+
 
 namespace Main
 {
@@ -10,6 +12,15 @@ namespace Main
         private Action<T> _pull;
         private Stack<T> pooledObjects = new Stack<T>();
         private GameObject _prefab;
+
+        private DiContainer _diContainer;
+        
+
+        public ObjectPool(GameObject pooledObject,DiContainer diContainer)
+        {
+            _prefab = pooledObject;
+            _diContainer = diContainer;
+        }
 
         public ObjectPool(GameObject pooledObject, int numToSpawn = 0)
         {
@@ -40,6 +51,26 @@ namespace Main
                 t = pooledObjects.Pop();
             else
                 t = GameObject.Instantiate(_prefab).GetComponent<T>();
+
+            t.gameObject.SetActive(true); //ensure the object is on
+            t.Initialize(Push);
+
+            //allow default behavior and turning object back on
+            _pull?.Invoke(t);
+
+            return t;
+        }
+
+        public T PullZenject()
+        {
+            T t;
+            if (PooledCount > 0)
+                t = pooledObjects.Pop();
+            else
+            {
+                t = _diContainer.InstantiatePrefab(_prefab).GetComponent<T>();
+            }
+
 
             t.gameObject.SetActive(true); //ensure the object is on
             t.Initialize(Push);

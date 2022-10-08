@@ -5,13 +5,6 @@ namespace Main
 {
     public class LevelController : MonoBehaviour
     {
-
-
-        private void Start()
-        {
-            GameManager.ChangeGameState(GameState.Preporations);
-        }
-
         private void OnEnable()
         {
             SceneManager.activeSceneChanged += SceneChanged;

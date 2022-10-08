@@ -1,10 +1,11 @@
 using System;
+using UnityEngine;
 
 namespace Main
 {
     public enum GameState { Preporations, StartGame, StartGameOverCatScene, GameOver }
 
-    
+
     public static class GameManager
     {
         public static event Action OnGameOver;

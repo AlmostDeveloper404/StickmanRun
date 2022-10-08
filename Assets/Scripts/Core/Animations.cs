@@ -9,6 +9,7 @@ namespace Main
         public static readonly int Death = Animator.StringToHash("Death");
         public static readonly int GameOver = Animator.StringToHash("GameOver");
         public static readonly int StartGame = Animator.StringToHash("StartGame");
+        public static readonly int ThrowGranade = Animator.StringToHash("ThrowGranade");
     }
 }
 

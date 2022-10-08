@@ -1,5 +1,7 @@
 using UnityEngine;
 using Zenject;
+using UniRx;
+using UniRx.Triggers;
 
 namespace Main
 {
@@ -13,16 +15,24 @@ namespace Main
         [SerializeField] private float _maxXPos = 2.5f;
         [SerializeField] private Animator _animator;
 
-        private DynamicJoystick _fixedJoystick;
+        private DynamicJoystick _dynamicJoystick;
+        private PlayerBodyguards _playerBodyGuards;
+
+        [SerializeField] private Collider _dangerCollider;
+
+        private CompositeDisposable _updateDisposable = new CompositeDisposable();
+        private CompositeDisposable _triggerDis = new CompositeDisposable();
 
         [Inject]
-        public void Construct(DynamicJoystick fixedJoystick)
+        public void Construct(DynamicJoystick fixedJoystick, PlayerBodyguards playerBodyguards)
         {
-            _fixedJoystick = fixedJoystick;
+            _dynamicJoystick = fixedJoystick;
+            _playerBodyGuards = playerBodyguards;
         }
 
         private void OnEnable()
         {
+            _dangerCollider.OnTriggerEnterAsObservable().Where(t => t.gameObject.layer == LayerMask.NameToLayer("Enemy")).Subscribe(_ => _playerBodyGuards.TryUseBodyguard(_)).AddTo(_triggerDis);
             GameManager.OnGameOver += GameOver;
             GameManager.OnStatedPreporations += StartPreporations;
             GameManager.OnGameStarted += StartGame;
@@ -30,8 +40,10 @@ namespace Main
 
         private void StartGame()
         {
+            Observable.EveryUpdate().Subscribe(_ => RxUpdate()).AddTo(_updateDisposable);
             _speed = _playerSpeed;
             _animator.SetTrigger(Animations.StartGame);
+
         }
 
         private void StartPreporations()
@@ -47,7 +59,7 @@ namespace Main
             GameManager.OnGameStarted -= StartGame;
         }
 
-        private void Update()
+        private void RxUpdate()
         {
             Move();
             MoveAnimation();
@@ -55,12 +67,12 @@ namespace Main
 
         private void MoveAnimation()
         {
-            _animator.SetFloat(Animations.HorizontalValue, _fixedJoystick.Horizontal);
+            _animator.SetFloat(Animations.HorizontalValue, _dynamicJoystick.Horizontal);
         }
 
         private void Move()
         {
-            Vector3 offset = new Vector3(_fixedJoystick.Horizontal, 0f, 1f).normalized * _speed * Time.deltaTime;
+            Vector3 offset = new Vector3(_dynamicJoystick.Horizontal, 0f, 1f).normalized * _speed * Time.deltaTime;
             Vector3 nextPosition = transform.position + offset;
 
             nextPosition.x = Mathf.Clamp(nextPosition.x, -_maxXPos, _maxXPos);
@@ -70,9 +82,16 @@ namespace Main
 
         private void GameOver()
         {
+            _updateDisposable?.Clear();
             _animator.applyRootMotion = true;
             _speed = 0;
             _animator.SetTrigger(Animations.Death);
+        }
+
+        private void OnDestroy()
+        {
+            _triggerDis?.Clear();
+            _updateDisposable?.Clear();
         }
     }
 }

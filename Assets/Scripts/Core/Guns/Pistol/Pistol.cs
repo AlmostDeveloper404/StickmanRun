@@ -9,10 +9,10 @@ namespace Main
         public Transform _spawnPoint;
 
 
-        public ObjectPool<Bullet> _bulletPool;
+        private ObjectPool<Bullet> _bulletPool;
 
 
-        public virtual void Start()
+        public virtual void OnEnable()
         {
             _bulletPool = new ObjectPool<Bullet>(_bulletPref);
         }

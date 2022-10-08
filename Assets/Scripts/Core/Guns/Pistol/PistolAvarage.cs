@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Main
@@ -8,9 +6,9 @@ namespace Main
     {
         [SerializeField] private float _intervalBetweenShots;
 
-        public override void Start()
+        public override void OnEnable()
         {
-            base.Start();
+            base.OnEnable();
             IntervalBetweenShots = _intervalBetweenShots;
         }
 
