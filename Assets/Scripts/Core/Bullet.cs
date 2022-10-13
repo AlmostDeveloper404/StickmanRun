@@ -38,6 +38,10 @@ namespace Main
                 gameObject.SetActive(false);
                 damagable.TakeDamage();
             }
+
+            DropArea dropArea = collider.GetComponentInParent<DropArea>();
+            if (dropArea) gameObject.SetActive(false);
+
         }
     }
 }

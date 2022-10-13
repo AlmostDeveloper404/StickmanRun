@@ -1,9 +1,8 @@
 using System;
-using UnityEngine;
 
 namespace Main
 {
-    public enum GameState { Preporations, StartGame, StartGameOverCatScene, GameOver }
+    public enum GameState { Preporations, StartGame, StartGameOverCatScene, BossFight, LevelCompleted, GameOver }
 
 
     public static class GameManager
@@ -12,6 +11,8 @@ namespace Main
         public static event Action OnGameStarted;
         public static event Action OnStatedPreporations;
         public static event Action OnGameOverCutScene;
+        public static event Action OnBossFightPreporations;
+        public static event Action OnLevelCompleted;
 
 
         public static void ChangeGameState(GameState gameState)
@@ -29,6 +30,12 @@ namespace Main
                     break;
                 case GameState.GameOver:
                     OnGameOver?.Invoke();
+                    break;
+                case GameState.BossFight:
+                    OnBossFightPreporations?.Invoke();
+                    break;
+                case GameState.LevelCompleted:
+                    OnLevelCompleted?.Invoke();
                     break;
                 default:
                     break;

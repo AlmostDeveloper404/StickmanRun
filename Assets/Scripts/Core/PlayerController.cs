@@ -9,7 +9,7 @@ namespace Main
     {
         [SerializeField] private float _speed;
 
-        private float _playerSpeed;
+        private float _playerStartSpeed;
 
 
         [SerializeField] private float _maxXPos = 2.5f;
@@ -22,6 +22,7 @@ namespace Main
 
         private CompositeDisposable _updateDisposable = new CompositeDisposable();
         private CompositeDisposable _triggerDis = new CompositeDisposable();
+        private CompositeDisposable _levelCompletedDis = new CompositeDisposable();
 
         [Inject]
         public void Construct(DynamicJoystick fixedJoystick, PlayerBodyguards playerBodyguards)
@@ -33,31 +34,34 @@ namespace Main
         private void OnEnable()
         {
             _dangerCollider.OnTriggerEnterAsObservable().Where(t => t.gameObject.layer == LayerMask.NameToLayer("Enemy")).Subscribe(_ => _playerBodyGuards.TryUseBodyguard(_)).AddTo(_triggerDis);
+
+            GameManager.OnLevelCompleted += LevelCompleted;
             GameManager.OnGameOver += GameOver;
             GameManager.OnStatedPreporations += StartPreporations;
             GameManager.OnGameStarted += StartGame;
         }
-
-        private void StartGame()
-        {
-            Observable.EveryUpdate().Subscribe(_ => RxUpdate()).AddTo(_updateDisposable);
-            _speed = _playerSpeed;
-            _animator.SetTrigger(Animations.StartGame);
-
-        }
-
-        private void StartPreporations()
-        {
-            _playerSpeed = _speed;
-            _speed = 0;
-        }
-
         private void OnDisable()
         {
+            GameManager.OnLevelCompleted -= LevelCompleted;
             GameManager.OnGameOver -= GameOver;
             GameManager.OnStatedPreporations -= StartPreporations;
             GameManager.OnGameStarted -= StartGame;
         }
+
+
+        private void StartPreporations()
+        {
+            _playerStartSpeed = _speed;
+            _speed = 0;
+        }
+        private void StartGame()
+        {
+            Observable.EveryUpdate().Subscribe(_ => RxUpdate()).AddTo(_updateDisposable);
+            _speed = _playerStartSpeed;
+            _animator.SetTrigger(Animations.StartGame);
+
+        }
+
 
         private void RxUpdate()
         {
@@ -88,10 +92,41 @@ namespace Main
             _animator.SetTrigger(Animations.Death);
         }
 
+
+        public void LevelCompleted()
+        {
+            _triggerDis?.Clear();
+            _updateDisposable?.Clear();
+            _animator.SetFloat(Animations.HorizontalValue, 0f);
+            _dangerCollider.enabled = false;
+
+            Observable.EveryUpdate().Subscribe(_ => RunToChest()).AddTo(_levelCompletedDis);
+        }
+
+        private void RunToChest()
+        {
+            Vector3 currentPos = transform.position;
+            currentPos.x = Mathf.Lerp(currentPos.x, 0f, Time.deltaTime * _speed);
+            currentPos.z += _speed * Time.deltaTime;
+
+            transform.position = currentPos;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            LCChest chest = other.GetComponent<LCChest>();
+
+            if (chest)
+            {
+                _speed = 0;
+                _animator.SetTrigger(Animations.LevelCompleted);
+            }
+        }
         private void OnDestroy()
         {
             _triggerDis?.Clear();
             _updateDisposable?.Clear();
+            _levelCompletedDis?.Clear();
         }
     }
 }

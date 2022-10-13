@@ -1114,6 +1114,7 @@ MonoBehaviour:
   _preporationsPanal: {fileID: 4819430245418467521}
   _gamePanal: {fileID: 4819430247186032988}
   _shopPanal: {fileID: 4819430246076072418}
+  _goldText: {fileID: 4819430246026739529}
 --- !u!1 &4819430246026739531
 GameObject:
   m_ObjectHideFlags: 0

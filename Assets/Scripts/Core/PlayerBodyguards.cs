@@ -28,11 +28,10 @@ namespace Main
         private DiContainer _diContainer;
 
         [Inject]
-        private void Construct(PlayerStats playerStats, DiContainer diContainer/*, DynamicJoystick dynamicJoystick*/)
+        private void Construct(PlayerStats playerStats, DiContainer diContainer)
         {
             _playerStats = playerStats;
             _diContainer = diContainer;
-            //_dynamicJoystick = dynamicJoystick;
         }
 
         private void Start()

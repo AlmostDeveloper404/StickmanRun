@@ -27,7 +27,7 @@ namespace Main
                     _playerStats.AddBodyguard(amount);
                     break;
                 case DropType.Money:
-                    _playerStats.AddMoney(amount);
+                    GameCurrency.AddGold(amount);
                     break;
                 case DropType.Granade:
                     _playerStats.AddGranade(amount);

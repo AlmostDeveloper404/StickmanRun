@@ -107,6 +107,7 @@ namespace Main
 
         public override void Death()
         {
+            IsAttacked = true;
             _animator.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             _playerCheckTrigger?.Clear();

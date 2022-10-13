@@ -1,25 +1,25 @@
 using UnityEngine;
 using System;
-using Zenject;
 
 namespace Main
 {
     [Serializable]
-    public struct PlayerStatsData
+    public struct GoldData
     {
-        public int GranadeAmount;
-        public int MoneyAmount;
-        public int BodyguardsAmount;
+        public int Gold;
     }
 
     public class PlayerStats : MonoBehaviour
     {
         public event Action<int> OnBodyguardAmountChanged;
         public event Action<int> OnGranadeAmountChanged;
-        public event Action<int> OnMoneyAmountChanged;
 
         private int _granadeAmount;
-        private int _money;
+
+        private void Start()
+        {
+            GameCurrency.Load();
+        }
 
         public void AddGranade(int amount)
         {
@@ -30,12 +30,6 @@ namespace Main
         public void AddBodyguard(int amount)
         {
             OnBodyguardAmountChanged?.Invoke(amount);
-        }
-
-        public void AddMoney(int amount)
-        {
-            _money += amount;
-            OnMoneyAmountChanged?.Invoke(_money);
         }
     }
 }

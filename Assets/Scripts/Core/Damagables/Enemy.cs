@@ -8,6 +8,8 @@ namespace Main
     {
         private CompositeDisposable _disposables = new CompositeDisposable();
 
+        public bool IsAttacked { get; set; } = false;
+
         protected virtual void OnEnable()
         {
             GameManager.OnGameStarted += StartGame;
@@ -47,6 +49,11 @@ namespace Main
         public virtual void Death()
         {
 
+        }
+
+        public void Disable()
+        {
+            gameObject.SetActive(false);
         }
 
     }

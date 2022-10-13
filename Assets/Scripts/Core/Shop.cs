@@ -12,8 +12,6 @@ namespace Main
 
     public class Shop : MonoBehaviour
     {
-        [SerializeField] private Transform _content;
-
         public event Action<Cell> OnWeaponChanged;
 
         private ShopData _shopData;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using TMPro;
 
 namespace Main
 {
@@ -17,6 +17,8 @@ namespace Main
         [SerializeField] private GameObject _gamePanal;
         [SerializeField] private GameObject _shopPanal;
 
+        [SerializeField] private TMP_Text _goldText;
+
         private PlayerShooting _playerShooting;
         private PlayerStats _playerStats;
 
@@ -29,9 +31,10 @@ namespace Main
 
         private void OnEnable()
         {
+            GameCurrency.OnGoldAmountChanged += UpdateGold;
+
             _playerStats.OnBodyguardAmountChanged += UpdateBodyguardsAmount;
             _playerStats.OnGranadeAmountChanged += UpdateGranadeAmount;
-            _playerStats.OnMoneyAmountChanged += UpdateMoneyAmount;
 
             GameManager.OnGameOver += GameOver;
             GameManager.OnStatedPreporations += StartPreporations;
@@ -44,9 +47,10 @@ namespace Main
         }
         private void OnDisable()
         {
+            GameCurrency.OnGoldAmountChanged -= UpdateGold;
+
             _playerStats.OnBodyguardAmountChanged -= UpdateBodyguardsAmount;
             _playerStats.OnGranadeAmountChanged -= UpdateGranadeAmount;
-            _playerStats.OnMoneyAmountChanged -= UpdateMoneyAmount;
 
             GameManager.OnGameOver -= GameOver;
             GameManager.OnStatedPreporations -= StartPreporations;
@@ -54,6 +58,11 @@ namespace Main
 
             _backButton.onClick.RemoveAllListeners();
             _tapToPlayButton.onClick.RemoveAllListeners();
+        }
+
+        private void UpdateGold(int amount)
+        {
+            _goldText.text = amount.ToString();
         }
 
         private void GameOver()
@@ -86,11 +95,6 @@ namespace Main
         }
 
         private void UpdateBodyguardsAmount(int amount)
-        {
-            
-        }
-
-        private void UpdateMoneyAmount(int amount)
         {
             
         }
