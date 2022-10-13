@@ -15039,6 +15039,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1053217384}
     m_Modifications:
+    - target: {fileID: 832337133, guid: 961be3bf357585541ae15a738fb66556, type: 3}
+      propertyPath: _dropType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3362308048672297243, guid: 961be3bf357585541ae15a738fb66556, type: 3}
       propertyPath: m_Name
       value: AreaLeft
