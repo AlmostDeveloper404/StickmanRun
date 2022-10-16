@@ -354,9 +354,9 @@ MonoBehaviour:
       outWeight: 0.20234329
     - serializedVersion: 3
       time: 1
-      value: -0.75
-      inSlope: -5.013482
-      outSlope: -5.013482
+      value: -0.6
+      inSlope: -4.5849104
+      outSlope: -4.5849104
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -447,8 +447,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _explosion: {fileID: 4077210869064010367}
   _boomParticles: {fileID: 7403507677437275494}
-  _explosionSpawnPoint: {fileID: 7101712400237026956}
-  _boomParticlesSpawnPoint: {fileID: 2545883515151971484}
+  _explosionOffset: {x: 0, y: 1, z: 0}
+  _boomParticlesOffset: {x: 0, y: 1, z: 0}
   _damageRadius: 4
   _damage: 3
 --- !u!1 &4035994191925770804

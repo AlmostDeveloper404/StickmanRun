@@ -22,8 +22,6 @@ namespace Main
 
         [SerializeField] private ParticleSystem _explosion;
         [SerializeField] private ParticleSystem _boomParticles;
-        [SerializeField] private Transform _explosionSpawnPoint;
-        [SerializeField] private Transform _boomParticlesSpawnPoint;
 
         [SerializeField] private float _damageRadius;
 
@@ -89,8 +87,8 @@ namespace Main
 
         private void Explode()
         {
-            _explosion.transform.position = _explosionSpawnPoint.position;
-            _boomParticles.transform.position = _boomParticlesSpawnPoint.position;
+            _explosion.transform.position = transform.position + Vector3.up;
+            _boomParticles.transform.position = transform.position + Vector3.up;
             _boomParticles.Play();
             _explosion.Play();
 

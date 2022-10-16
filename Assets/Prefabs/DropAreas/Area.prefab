@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8468c2c41304f3941804bcd5fff66dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dropType: 0
+  _dropType: 2
   _amount: 1
   _bodyguard: {fileID: 21300000, guid: 9502f77e1ced77d45a17cb2a4b114b63, type: 3}
   _coins: {fileID: 21300000, guid: e1e5684d02a9a184ab813c828a5cced8, type: 3}
