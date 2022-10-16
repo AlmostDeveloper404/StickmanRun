@@ -7,7 +7,6 @@ namespace Main
     public class PlayerShooting : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _firePoint;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _weaponHolder;
         [SerializeField] private GameObject _granadePref;
@@ -100,6 +99,7 @@ namespace Main
                 if (weapon == cell.Weapon)
                 {
                     weapon.gameObject.SetActive(true);
+                    _timer = weapon.IntervalBetweenShots;
                     SetWeapon(weapon);
                 }
                 else

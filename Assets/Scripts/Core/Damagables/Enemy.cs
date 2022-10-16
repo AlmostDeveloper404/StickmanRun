@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 using UniRx;
 
 namespace Main
@@ -48,11 +47,13 @@ namespace Main
 
         public virtual void Death()
         {
-
+            IsAttacked = true;
+            _disposables?.Clear();
         }
 
         public void Disable()
         {
+            _disposables?.Clear();
             gameObject.SetActive(false);
         }
 

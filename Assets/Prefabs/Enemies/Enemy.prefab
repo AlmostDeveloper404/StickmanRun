@@ -76,7 +76,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0019313449, y: 0.060946144, z: 0.100943744}
+  m_ConnectedAnchor: {x: 0.0019294968, y: 0.060946256, z: 0.10094367}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -246,7 +246,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.033277806, y: 0.52552754, z: 0.00499002}
+  m_ConnectedAnchor: {x: 0.033279616, y: 0.5255276, z: 0.0049900208}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -866,6 +866,7 @@ MonoBehaviour:
   _speed: 3
   _rotationSpeed: 5
   _checkForPlayerDistance: 15
+  _health: 1
   _animator: {fileID: 7468194620571062081}
   _checkForKickCollider: {fileID: 5663677228537885900}
 --- !u!1 &4183746233519738753
@@ -1028,7 +1029,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000013411072, y: 0.3119883, z: -0.00000001490118}
+  m_ConnectedAnchor: {x: -0.0000014826685, y: 0.311989, z: 0.0000007487843}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1169,7 +1170,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0019310463, y: 0.060945973, z: -0.101649925}
+  m_ConnectedAnchor: {x: 0.0019291387, y: 0.06094609, z: -0.10165001}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2117,7 +2118,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.014561444, y: 0.21000612, z: 0.0013206499}
+  m_ConnectedAnchor: {x: 0.014559536, y: 0.21000624, z: 0.0013205679}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:

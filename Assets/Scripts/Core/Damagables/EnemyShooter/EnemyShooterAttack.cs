@@ -24,6 +24,7 @@ namespace Main
             Quaternion lookRotation = Quaternion.LookRotation(direction.normalized);
 
             straightForwardEnemy.transform.rotation = lookRotation;
+
         }
     }
 }

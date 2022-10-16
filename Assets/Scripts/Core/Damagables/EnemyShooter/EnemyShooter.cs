@@ -67,7 +67,7 @@ namespace Main
             base.StartPreporations();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
             Death();
             

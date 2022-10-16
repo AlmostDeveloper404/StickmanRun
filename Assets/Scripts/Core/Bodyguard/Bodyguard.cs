@@ -9,22 +9,18 @@ namespace Main
     public class Bodyguard : MonoBehaviour, IPoolable<Bodyguard>
     {
         private BodyguardBase _currentState;
-        public BodyguardAttack BodyguardAttack { get; set; }
-        public BodyguardEscort BodyguardSecure { get; private set; }
-
-        public BodyguardDefend BodyguardDefend { get; private set; }
+        private BodyguardWinning _bodyguardWinningState;
+        private BodyguardGameOver _bodyguardGameOverState;
+        public BodyguardAttack BodyguardAttackState { get; set; }
+        public BodyguardEscort BodyguardSecureState { get; private set; }
+        public BodyguardDefend BodyguardDefendState { get; private set; }
 
 
         private Action<Bodyguard> _returnToPool;
-        private BodyguardPoint _point;
 
         [SerializeField] private float _lerpingSpeed;
 
         public float LerpingSpeed { get { return _lerpingSpeed; } }
-
-        //private CompositeDisposable _secureDisposable = new CompositeDisposable();
-        //private CompositeDisposable _attackDisposable = new CompositeDisposable();
-        //private CompositeDisposable _attackTriggerDisposable = new CompositeDisposable();
 
         private CompositeDisposable _updateDisposable = new CompositeDisposable();
         private CompositeDisposable _attackDisposable = new CompositeDisposable();
@@ -33,37 +29,53 @@ namespace Main
 
         private DynamicJoystick _dynamicJoystick;
 
-        private Enemy _targetEnemy;
         [SerializeField] private Collider _attackRadius;
 
         private PlayerBodyguards _playerBodyguards;
+        private PlayerController _playerController;
 
         [SerializeField] private float _attackSpeed;
 
         public float AttackSpeed { get { return _attackSpeed; } }
 
         [Inject]
-        public void Construct(DynamicJoystick dynamicJoystick, PlayerBodyguards playerBodyguards)
+        public void Construct(DynamicJoystick dynamicJoystick, PlayerBodyguards playerBodyguards,PlayerController playerController)
         {
             _playerBodyguards = playerBodyguards;
             _dynamicJoystick = dynamicJoystick;
+            _playerController = playerController;
         }
 
         private void OnEnable()
         {
+            GameManager.OnLevelCompleted += LevelCompleted;
+            GameManager.OnGameOver += GameOver;
             Observable.EveryUpdate().Subscribe(_ => UpdateState()).AddTo(_updateDisposable);
         }
 
+
         private void OnDisable()
         {
+            GameManager.OnLevelCompleted -= LevelCompleted;
             _updateDisposable?.Clear();
             ReturnToPool();
+        }
+        private void LevelCompleted()
+        {
+            _bodyguardWinningState = new BodyguardWinning(_animator);
+            _currentState = _bodyguardWinningState;
+            _currentState.EntryState(this);
+        }
+        private void GameOver()
+        {
+            _bodyguardGameOverState = new BodyguardGameOver(_animator,_playerController);
+            _currentState = _bodyguardGameOverState;
+            _currentState.EntryState(this);
         }
 
         public void Initialize(Action<Bodyguard> returnAction)
         {
             _returnToPool = returnAction;
-            //_attackRadius.OnTriggerEnterAsObservable().Where(t => t.gameObject.layer == LayerMask.NameToLayer("Enemy")).Subscribe(_ => AttackTrigger(_)).AddTo(_attackTriggerDisposable);
             _attackRadius.OnTriggerEnterAsObservable().Where(t => t.gameObject.GetComponent<Enemy>()).Subscribe(_ => CheckForTrigger(_.GetComponent<Enemy>())).AddTo(_attackDisposable);
         }
 
@@ -74,8 +86,8 @@ namespace Main
 
         public void PrepareSecuring(BodyguardPoint bodyguardPoint)
         {
-            BodyguardSecure = new BodyguardEscort(_animator, _dynamicJoystick, bodyguardPoint, _playerBodyguards);
-            _currentState = BodyguardSecure;
+            BodyguardSecureState = new BodyguardEscort(_animator, _dynamicJoystick, bodyguardPoint, _playerBodyguards);
+            _currentState = BodyguardSecureState;
             _currentState.EntryState(this);
         }
 
@@ -96,8 +108,8 @@ namespace Main
 
             if (enemy)
             {
-                BodyguardDefend = new BodyguardDefend(enemy, _animator, _playerBodyguards);
-                ChangeState(BodyguardDefend);
+                BodyguardDefendState = new BodyguardDefend(enemy, _animator, _playerBodyguards);
+                ChangeState(BodyguardDefendState);
             }
         }
 
@@ -110,84 +122,5 @@ namespace Main
         {
             _animator.enabled = false;
         }
-        //    public void PrepareSecuring(BodyguardPoint bodyguardPoint)
-        //    {
-        //        _animator.SetTrigger(Animations.StartGame);
-        //        _point = bodyguardPoint;
-        //        Observable.EveryUpdate().Subscribe(_ => Secure()).AddTo(_secureDisposable);
-        //    }
-
-        //    private void Secure()
-        //    {
-        //        _animator.SetFloat(Animations.HorizontalValue, _dynamicJoystick.Horizontal);
-        //        transform.position = Vector3.Lerp(transform.position, _point.transform.position, _lerpingSpeed * Time.deltaTime);
-        //    }
-
-        //    public void Defend(Collider collider)
-        //    {
-        //        Enemy enemy = collider.GetComponent<Enemy>();
-
-        //        if (enemy)
-        //        {
-        //            _targetEnemy = enemy;
-        //            Observable.EveryUpdate().Subscribe(_ => Attack()).AddTo(_attackDisposable);
-        //        }
-
-        //    }
-
-
-        //    private void Attack()
-        //    {
-        //        if (_targetEnemy.IsAttacked)
-        //        {
-        //            _attackDisposable?.Clear();
-        //            Observable.EveryUpdate().Subscribe(_ => Secure()).AddTo(_secureDisposable);
-        //            return;
-        //        }
-        //        RotateTowardsEnemy();
-        //        transform.position += transform.forward * _attackSpeed * Time.deltaTime;
-        //    }
-
-        //    private void AttackTrigger(Collider collider)
-        //    {
-        //        Enemy enemy = collider.GetComponent<Enemy>();
-
-        //        if (!enemy) return;
-
-        //        _targetEnemy = enemy;
-        //        transform.parent = null;
-        //        enemy.IsAttacked = true;
-        //        RotateTowardsEnemy();
-        //        collider.GetComponent<Enemy>().Death();
-
-        //        _animator.SetTrigger(Animations.AttackHash);
-        //        _playerBodyguards.RemoveBodyguard(this);
-
-        //        _secureDisposable?.Clear();
-        //        _attackTriggerDisposable?.Clear();
-        //        _attackDisposable?.Clear();
-        //    }
-
-        //    private void RotateTowardsEnemy()
-        //    {
-        //        Vector3 direction = _targetEnemy.transform.position - transform.position;
-        //        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        //        transform.rotation = lookRotation;
-        //    }
-
-        //    private void OnDisable()
-        //    {
-        //        ReturnToPool();
-        //    }
-
-        //    void OnDestroy()
-        //    {
-        //        _secureDisposable?.Clear();
-        //    }
-
-
-
-
     }
 }
-

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 using UniRx.Triggers;
@@ -18,6 +17,8 @@ namespace Main
         public float DistanceToCheckForPlayer { get { return _checkForPlayerDistance; } }
         public float Speed { get { return _speed; } }
         public float RotationSpeed { get { return _rotationSpeed; } }
+
+        [SerializeField] private int _health;
 
 
 
@@ -100,14 +101,18 @@ namespace Main
         }
 
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            Death();
+            _health -= damage;
+            if (_health<=0)
+            {
+                Death();
+            }
         }
 
         public override void Death()
         {
-            IsAttacked = true;
+            base.Death();
             _animator.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             _playerCheckTrigger?.Clear();

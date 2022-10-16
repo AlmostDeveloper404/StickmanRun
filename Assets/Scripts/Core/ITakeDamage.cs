@@ -6,7 +6,7 @@ namespace Main
 {
     public interface ITakeDamage
     {
-        void TakeDamage();
+        void TakeDamage(int damage);
     }
 }
 

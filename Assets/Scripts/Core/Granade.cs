@@ -20,7 +20,14 @@ namespace Main
         [SerializeField] private AnimationCurve _scale;
         [SerializeField] private AnimationCurve _granadeRotation;
 
+        [SerializeField] private ParticleSystem _explosion;
+        [SerializeField] private ParticleSystem _boomParticles;
+        [SerializeField] private Transform _explosionSpawnPoint;
+        [SerializeField] private Transform _boomParticlesSpawnPoint;
+
         [SerializeField] private float _damageRadius;
+
+        [SerializeField] private int _damage;
 
         private CompositeDisposable _throwingGranade = new CompositeDisposable();
 
@@ -36,6 +43,9 @@ namespace Main
 
         public void Initialize(Action<Granade> returnAction)
         {
+            _explosion.transform.parent = null;
+            _boomParticles.transform.parent = null;
+
             _timer = 0;
             _throwingProgress = 0;
 
@@ -79,13 +89,18 @@ namespace Main
 
         private void Explode()
         {
+            _explosion.transform.position = _explosionSpawnPoint.position;
+            _boomParticles.transform.position = _boomParticlesSpawnPoint.position;
+            _boomParticles.Play();
+            _explosion.Play();
+
             Collider[] _allColliders = Physics.OverlapSphere(transform.position, _damageRadius);
             foreach (var collider in _allColliders)
             {
                 ITakeDamage takeDamage = collider.GetComponent<ITakeDamage>();
                 if (takeDamage != null)
                 {
-                    takeDamage.TakeDamage();
+                    takeDamage.TakeDamage(_damage);
                 }
             }
             _throwingGranade?.Clear();

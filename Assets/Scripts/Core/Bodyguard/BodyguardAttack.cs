@@ -41,7 +41,7 @@ namespace Main
             }
             else
             {
-                bodyguard.ChangeState(bodyguard.BodyguardSecure);
+                bodyguard.ChangeState(bodyguard.BodyguardSecureState);
             }
         }
 

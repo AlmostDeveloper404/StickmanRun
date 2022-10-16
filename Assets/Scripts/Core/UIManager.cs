@@ -18,12 +18,13 @@ namespace Main
         [SerializeField] private GameObject _shopPanal;
 
         [SerializeField] private TMP_Text _goldText;
+        [SerializeField] private TMP_Text _granadeAmountText;
 
         private PlayerShooting _playerShooting;
         private PlayerStats _playerStats;
 
         [Inject]
-        public void Construct(PlayerShooting playerShooting, PlayerStats playerStats)
+        private void Construct(PlayerShooting playerShooting, PlayerStats playerStats)
         {
             _playerShooting = playerShooting;
             _playerStats = playerStats;
@@ -33,7 +34,6 @@ namespace Main
         {
             GameCurrency.OnGoldAmountChanged += UpdateGold;
 
-            _playerStats.OnBodyguardAmountChanged += UpdateBodyguardsAmount;
             _playerStats.OnGranadeAmountChanged += UpdateGranadeAmount;
 
             GameManager.OnGameOver += GameOver;
@@ -49,7 +49,6 @@ namespace Main
         {
             GameCurrency.OnGoldAmountChanged -= UpdateGold;
 
-            _playerStats.OnBodyguardAmountChanged -= UpdateBodyguardsAmount;
             _playerStats.OnGranadeAmountChanged -= UpdateGranadeAmount;
 
             GameManager.OnGameOver -= GameOver;
@@ -80,6 +79,7 @@ namespace Main
         {
             _gamePanal.SetActive(true);
             _preporationsPanal.SetActive(false);
+            UpdateGranadeAmount(0);
         }
 
         private void ToShop()
@@ -94,14 +94,10 @@ namespace Main
             _preporationsPanal.SetActive(true);
         }
 
-        private void UpdateBodyguardsAmount(int amount)
-        {
-            
-        }
-
         private void UpdateGranadeAmount(int amount)
         {
-            
+            _granadeAmountText.outlineColor = amount == 0 ? Color.red : Color.green;
+            _granadeAmountText.text = amount.ToString();
         }
 
 

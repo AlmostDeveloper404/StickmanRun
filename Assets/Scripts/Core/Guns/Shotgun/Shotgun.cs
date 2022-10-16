@@ -22,7 +22,7 @@ namespace Main
         {
             for (int i = 0; i < _spawnPoint.Length; i++)
             {
-                Bullet bullet = _bulletPool.Pull(_spawnPoint[i].position, Quaternion.identity);
+                Bullet bullet = _bulletPool.Pull(_spawnPoint[i].position, _spawnPoint[i].rotation);
             }
 
         }

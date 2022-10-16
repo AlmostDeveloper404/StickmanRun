@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Main
@@ -24,9 +22,10 @@ namespace Main
 
         public override void UpdateState(Bodyguard bodyguard)
         {
+            Debug.Log(_enemy.IsAttacked);
             if (_enemy.IsAttacked)
             {
-                bodyguard.ChangeState(bodyguard.BodyguardSecure);
+                bodyguard.ChangeState(bodyguard.BodyguardSecureState);
                 return;
             }
 
@@ -39,8 +38,8 @@ namespace Main
         }
         public override void OnTriggerState(Bodyguard bodyguard, Enemy enemy)
         {
-            bodyguard.BodyguardAttack = new BodyguardAttack(_animator, enemy, _playerBodyguards);
-            bodyguard.ChangeState(bodyguard.BodyguardAttack);
+            bodyguard.BodyguardAttackState = new BodyguardAttack(_animator, enemy, _playerBodyguards);
+            bodyguard.ChangeState(bodyguard.BodyguardAttackState);
         }
 
     }
