@@ -1,27 +1,37 @@
 using UnityEngine;
 using Zenject;
-using UnityEngine.UI;
 using TMPro;
 
 namespace Main
 {
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private Button _shootButton;
-        [SerializeField] private Button _tapToPlayButton;
-        [SerializeField] private Button _backButton;
-        [SerializeField] private Button _shopButton;
-        [SerializeField] private Button _granadeButton;
 
-        [SerializeField] private GameObject _preporationsPanal;
-        [SerializeField] private GameObject _gamePanal;
-        [SerializeField] private GameObject _shopPanal;
+
+        [SerializeField] private ShopPanal _shopPanal;
+        [SerializeField] private PreporationPanal _preporationsPanal;
+        [SerializeField] private GamePanal _gamePanal;
+        [SerializeField] private EndGamePanal _endPanal;
 
         [SerializeField] private TMP_Text _goldText;
-        [SerializeField] private TMP_Text _granadeAmountText;
+
+
+
+        private PanalObject _currentOpenedPanal;
+        public ShopPanal ShopPanal { get { return _shopPanal; } }
+        public PreporationPanal PreporationPanal { get { return _preporationsPanal; } }
+        public GamePanal GamePanal { get { return _gamePanal; } }
+        public EndGamePanal EndGamePanal { get { return _endPanal; } }
 
         private PlayerShooting _playerShooting;
         private PlayerStats _playerStats;
+
+        public PlayerShooting PlayerShooting { get { return _playerShooting; } }
+        public PlayerStats PlayerStats { get { return _playerStats; } }
+
+        private bool _isLost;
+
+        public bool IsLost { get { return _isLost; } }
 
         [Inject]
         private void Construct(PlayerShooting playerShooting, PlayerStats playerStats)
@@ -30,33 +40,42 @@ namespace Main
             _playerStats = playerStats;
         }
 
+
         private void OnEnable()
         {
             GameCurrency.OnGoldAmountChanged += UpdateGold;
-
-            _playerStats.OnGranadeAmountChanged += UpdateGranadeAmount;
-
             GameManager.OnGameOver += GameOver;
             GameManager.OnStatedPreporations += StartPreporations;
             GameManager.OnGameStarted += StartGame;
-
-            _granadeButton.onClick.AddListener(() => _playerShooting.PrepareForThrowing());
-            _shopButton.onClick.AddListener(() => ToShop());
-            _backButton.onClick.AddListener(() => Back());
-            _tapToPlayButton.onClick.AddListener(() => GameManager.ChangeGameState(GameState.StartGame));
+            GameManager.OnLevelCompleted += LevelCompleted;
         }
+
         private void OnDisable()
         {
             GameCurrency.OnGoldAmountChanged -= UpdateGold;
-
-            _playerStats.OnGranadeAmountChanged -= UpdateGranadeAmount;
-
             GameManager.OnGameOver -= GameOver;
             GameManager.OnStatedPreporations -= StartPreporations;
             GameManager.OnGameStarted -= StartGame;
+            GameManager.OnLevelCompleted -= LevelCompleted;
 
-            _backButton.onClick.RemoveAllListeners();
-            _tapToPlayButton.onClick.RemoveAllListeners();
+        }
+        private void StartPreporations()
+        {
+            ChangePanal(PreporationPanal);
+        }
+
+        private void StartGame()
+        {
+            ChangePanal(GamePanal);
+        }
+
+        private void LevelCompleted()
+        {
+            _isLost = false;
+        }
+        private void GameOver()
+        {
+            _isLost = true;
         }
 
         private void UpdateGold(int amount)
@@ -64,40 +83,13 @@ namespace Main
             _goldText.text = amount.ToString();
         }
 
-        private void GameOver()
-        {
-            _shootButton.interactable = false;
-        }
 
-        private void StartPreporations()
-        {
-            _gamePanal.SetActive(false);
-            _preporationsPanal.SetActive(true);
-        }
 
-        private void StartGame()
+        public void ChangePanal(PanalObject panalObject)
         {
-            _gamePanal.SetActive(true);
-            _preporationsPanal.SetActive(false);
-            UpdateGranadeAmount(0);
-        }
-
-        private void ToShop()
-        {
-            _preporationsPanal.SetActive(false);
-            _shopPanal.SetActive(true);
-        }
-
-        private void Back()
-        {
-            _shopPanal.SetActive(false);
-            _preporationsPanal.SetActive(true);
-        }
-
-        private void UpdateGranadeAmount(int amount)
-        {
-            _granadeAmountText.outlineColor = amount == 0 ? Color.red : Color.green;
-            _granadeAmountText.text = amount.ToString();
+            _currentOpenedPanal?.gameObject.SetActive(false);
+            _currentOpenedPanal = panalObject;
+            _currentOpenedPanal.gameObject.SetActive(true);
         }
 
 

@@ -20,6 +20,7 @@ namespace Main
 
         public override void Attack()
         {
+            base.Attack();
             Bullet bullet = _bulletPool.Pull(_spawnPoint.position, Quaternion.identity);
         }
     }

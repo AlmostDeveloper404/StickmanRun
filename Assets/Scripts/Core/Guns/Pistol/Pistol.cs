@@ -11,7 +11,6 @@ namespace Main
 
         private ObjectPool<Bullet> _bulletPool;
 
-
         public virtual void OnEnable()
         {
             _bulletPool = new ObjectPool<Bullet>(_bulletPref);
@@ -19,6 +18,7 @@ namespace Main
 
         public override void Attack()
         {
+            base.Attack();
             Bullet bullet = _bulletPool.Pull(_spawnPoint.position, Quaternion.identity);
         }
     }

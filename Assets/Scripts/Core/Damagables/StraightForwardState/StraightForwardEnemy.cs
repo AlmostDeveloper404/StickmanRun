@@ -45,7 +45,7 @@ namespace Main
 
         private void Start()
         {
-            _checkForKickCollider.OnTriggerEnterAsObservable().Where(t => t.gameObject.layer == LayerMask.NameToLayer("Player")).Subscribe(_ => Kick()).AddTo(_playerCheckTrigger);
+            _checkForKickCollider.OnTriggerEnterAsObservable().Where(t => t.gameObject.GetComponent<PlayerController>()).Subscribe(_ => Kick()).AddTo(_playerCheckTrigger);
         }
 
         protected override void OnEnable()
@@ -60,6 +60,7 @@ namespace Main
         protected override void OnDisable()
         {
             base.OnDisable();
+
         }
         protected override void StartPreporations()
         {
@@ -84,7 +85,6 @@ namespace Main
 
         private void Kick()
         {
-            _playerCheckTrigger?.Clear();
             GameManager.OnGameOver -= GameOver;
 
             _speed = 0;
@@ -92,6 +92,7 @@ namespace Main
 
             _animator.SetTrigger(Animations.AttackHash);
             GameManager.ChangeGameState(GameState.GameOver);
+            _playerCheckTrigger?.Clear();
         }
 
         public void ChangeState(EnemyBase<StraightForwardEnemy> straightForwardBase)
@@ -104,7 +105,7 @@ namespace Main
         public void TakeDamage(int damage)
         {
             _health -= damage;
-            if (_health<=0)
+            if (_health <= 0)
             {
                 Death();
             }
@@ -115,9 +116,9 @@ namespace Main
             base.Death();
             _animator.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
-            _playerCheckTrigger?.Clear();
             _speed = 0;
             _rotationSpeed = 0;
+            _playerCheckTrigger?.Clear();
         }
 
         protected override void GameOver()
@@ -126,6 +127,8 @@ namespace Main
             _rotationSpeed = 0;
             _animator.SetTrigger(Animations.GameOver);
         }
+
+
     }
 }
 

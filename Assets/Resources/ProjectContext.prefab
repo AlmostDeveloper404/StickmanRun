@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4212742648482028778}
   - component: {fileID: 5801495483001144531}
-  - component: {fileID: 3416842327715945886}
+  - component: {fileID: 1474340899821307073}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -28,7 +28,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs:
-  - {fileID: 3416842327715945886}
+  _monoInstallers:
+  - {fileID: 1474340899821307073}
+  _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
@@ -62,7 +61,7 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
---- !u!114 &3416842327715945886
+--- !u!114 &1474340899821307073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7839379996078403411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa62768d194be0a4c9621855b3a01a32, type: 3}
+  m_Script: {fileID: 11500000, guid: 12eadfbd0ea375e468a87679d4cf9a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelController: {fileID: 8805271581068787891, guid: a1cde20e27b86be46b7d1eb8353dcc61, type: 3}
+  _smPrefab: {fileID: 2443014736686289519, guid: 5d23f38774b9ac34789fab8ee963f690, type: 3}

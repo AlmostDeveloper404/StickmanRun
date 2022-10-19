@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5141956936795134126}
   - component: {fileID: 5133104825642597528}
   - component: {fileID: 3252123510569731330}
+  - component: {fileID: 8180039265003160611}
   m_Layer: 0
   m_Name: Bullet_Shotgun
   m_TagString: Untagged
@@ -162,6 +163,21 @@ MonoBehaviour:
   _speed: 22
   _waves: {fileID: 8533010279742510552}
   _damage: 1
+--- !u!114 &8180039265003160611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632340825078092899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e86f26807554ad4791323aef6d675c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectsToActivate: []
+  _behaviours: []
+  _disableSelf: 1
 --- !u!1 &3446347470840654555
 GameObject:
   m_ObjectHideFlags: 0

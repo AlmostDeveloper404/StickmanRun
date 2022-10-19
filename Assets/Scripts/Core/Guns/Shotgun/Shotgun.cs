@@ -20,6 +20,7 @@ namespace Main
 
         public override void Attack()
         {
+            base.Attack();
             for (int i = 0; i < _spawnPoint.Length; i++)
             {
                 Bullet bullet = _bulletPool.Pull(_spawnPoint[i].position, _spawnPoint[i].rotation);

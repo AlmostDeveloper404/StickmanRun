@@ -1,4 +1,6 @@
 using System;
+using UnityEngine;
+
 
 namespace Main
 {
@@ -26,12 +28,13 @@ namespace Main
             GoldData goldData = SaveLoadProgress.LoadData<GoldData>(UniqSavingIdentefiers.GameCurrency);
             if (goldData.Equals(default(GoldData)))
             {
-                AddGold(0);
+                _goldamount = 0;
             }
             else
             {
-                AddGold(goldData.Gold);
+                _goldamount = goldData.Gold;
             }
+            OnGoldAmountChanged?.Invoke(_goldamount);
         }
 
         public static void Save(GoldData data)

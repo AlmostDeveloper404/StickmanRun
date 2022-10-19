@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Main
 {
@@ -30,6 +31,18 @@ namespace Main
         public void AddBodyguard(int amount)
         {
             OnBodyguardAmountChanged?.Invoke(amount);
+        }
+
+        [ContextMenu("Zero Gold")]
+        private void ZeroGold()
+        {
+            SaveLoadProgress.DeleteData(UniqSavingIdentefiers.GameCurrency);
+        }
+
+        [ContextMenu("Restart")]
+        private void Restart()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

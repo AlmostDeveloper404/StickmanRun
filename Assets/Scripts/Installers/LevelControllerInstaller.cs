@@ -6,13 +6,12 @@ namespace Main
 {
     public class LevelControllerInstaller : MonoInstaller
     {
-        [SerializeField] private LevelController _levelController;
+        //[SerializeField] private LevelController _levelController;
 
-        public override void InstallBindings()
-        {
-            var levelController = Container.InstantiatePrefabForComponent<LevelController>(_levelController);
-            Container.Bind<LevelController>().FromInstance(levelController).AsSingle().NonLazy();
-        }
+        //public override void InstallBindings()
+        //{
+        //    Container.Bind<LevelController>().FromInstance(_levelController).AsSingle().NonLazy();
+        //}
     }
 }
 

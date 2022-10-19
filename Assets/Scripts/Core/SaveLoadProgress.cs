@@ -26,6 +26,7 @@ namespace Main
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream stream = new FileStream(path, FileMode.Open);
 
+                
                 T playerProgress = (T)formatter.Deserialize(stream);
                 stream.Close();
 

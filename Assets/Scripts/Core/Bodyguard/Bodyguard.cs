@@ -39,7 +39,7 @@ namespace Main
         public float AttackSpeed { get { return _attackSpeed; } }
 
         [Inject]
-        public void Construct(DynamicJoystick dynamicJoystick, PlayerBodyguards playerBodyguards,PlayerController playerController)
+        public void Construct(DynamicJoystick dynamicJoystick, PlayerBodyguards playerBodyguards, PlayerController playerController)
         {
             _playerBodyguards = playerBodyguards;
             _dynamicJoystick = dynamicJoystick;
@@ -57,7 +57,9 @@ namespace Main
         private void OnDisable()
         {
             GameManager.OnLevelCompleted -= LevelCompleted;
+            GameManager.OnGameOver -= GameOver;
             _updateDisposable?.Clear();
+            _attackDisposable?.Clear();
             ReturnToPool();
         }
         private void LevelCompleted()
@@ -68,7 +70,7 @@ namespace Main
         }
         private void GameOver()
         {
-            _bodyguardGameOverState = new BodyguardGameOver(_animator,_playerController);
+            _bodyguardGameOverState = new BodyguardGameOver(_animator, _playerController);
             _currentState = _bodyguardGameOverState;
             _currentState.EntryState(this);
         }

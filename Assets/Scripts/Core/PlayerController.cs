@@ -11,7 +11,6 @@ namespace Main
 
         private float _playerStartSpeed;
 
-
         [SerializeField] private float _maxXPos = 2.5f;
         [SerializeField] private Animator _animator;
 
@@ -48,6 +47,11 @@ namespace Main
             GameManager.OnGameStarted -= StartGame;
         }
 
+        private void Start()
+        {
+            GameManager.ChangeGameState(GameState.Preporations);
+        }
+
 
         private void StartPreporations()
         {
@@ -59,7 +63,6 @@ namespace Main
             Observable.EveryUpdate().Subscribe(_ => RxUpdate()).AddTo(_updateDisposable);
             _speed = _playerStartSpeed;
             _animator.SetTrigger(Animations.StartGame);
-
         }
 
 

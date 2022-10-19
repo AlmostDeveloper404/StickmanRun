@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 4000010778445562}
   - component: {fileID: 33000014014051330}
   - component: {fileID: 23000011249507688}
-  - component: {fileID: -2452659298348959534}
   - component: {fileID: -2918427520999904460}
   m_Layer: 0
   m_Name: gun_b01
@@ -250,24 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-2452659298348959534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013777105188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &-2918427520999904460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,5 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c64bc0af897fb6429dc71f73ea4255b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 0}
   _bulletPref: {fileID: 0}
   _spawnPoint: []

@@ -536,7 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951255578}
-  - component: {fileID: 951255579}
+  - component: {fileID: 9060387196538379838}
   m_Layer: 6
   m_Name: Timeline
   m_TagString: Untagged
@@ -558,7 +558,7 @@ Transform:
   m_Father: {fileID: 293953572764348722}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &951255579
+--- !u!320 &9060387196538379838
 PlayableDirector:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -578,7 +578,7 @@ PlayableDirector:
   - key: {fileID: 2377831777035938708, guid: adbccb81eecee914d8d65f7d3ad4bd12, type: 2}
     value: {fileID: 0}
   - key: {fileID: -9014301344429704815, guid: adbccb81eecee914d8d65f7d3ad4bd12, type: 2}
-    value: {fileID: 1419543274}
+    value: {fileID: 9060387196538379840}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1048153505
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 8869050999357130128}
   - component: {fileID: 2926064451713490761}
   - component: {fileID: 7260560667219431755}
-  - component: {fileID: 1419543274}
+  - component: {fileID: 9060387196538379840}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 6160573126487662209}
   _weaponHolder: {fileID: 7079336569090756683}
-  _granadePref: {fileID: 3888039039384379678, guid: ea45ddec2e569234095af2be715568cf, type: 3}
+  _granadePref: {fileID: 3888039039384379678, guid: 2c794fc28d99e4b478568e95a7c8988b, type: 3}
   _granadeSpawnPoint: {fileID: 245484555}
 --- !u!114 &2926064451713490761
 MonoBehaviour:
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed2f6d065ccbbf41a92bcf342a4baa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1419543274
+--- !u!114 &9060387196538379840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1103,6 +1103,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: cf76b15a09acc774aa81b8c094b35fc6, type: 2}
+    - {fileID: 11400000, guid: 3d6692634e96869419fd620ff8e1d760, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1113,6 +1114,20 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Main.UIManager, Core
+          m_MethodName: ChangePanal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: Main.PanalObject, Core
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1249,7 +1264,6 @@ GameObject:
   - component: {fileID: 295655148880047882}
   - component: {fileID: 315648217734985288}
   - component: {fileID: 307902100560664444}
-  - component: {fileID: 3606791097257117327}
   - component: {fileID: 8789079731332516172}
   m_Layer: 6
   m_Name: gun_a01
@@ -1330,24 +1344,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3606791097257117327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294942577090288368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &8789079731332516172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,6 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4694616d9d7a687429bf6de297807a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 5479370568832293318}
   _intervalBetweenShots: 0.3
@@ -1785,7 +1782,6 @@ GameObject:
   - component: {fileID: 509218633760572135}
   - component: {fileID: 534260455961587743}
   - component: {fileID: 526525573734357365}
-  - component: {fileID: 6550847430372031695}
   - component: {fileID: 8859264494311999317}
   m_Layer: 0
   m_Name: gun_b01
@@ -1865,24 +1861,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6550847430372031695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512464616697591097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &8859264494311999317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,6 +1873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c866b7b1e3f23d74ca917c17652cd043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 6043637ba75fec544b7dab587d65af04, type: 3}
   _spawnPoint:
   - {fileID: 1359501967}
@@ -2062,7 +2041,6 @@ GameObject:
   - component: {fileID: 930614939142856460}
   - component: {fileID: 905573117248895018}
   - component: {fileID: 915839060395490290}
-  - component: {fileID: 2287743973036585426}
   - component: {fileID: 3008980842341135862}
   m_Layer: 0
   m_Name: gun_c02
@@ -2136,24 +2114,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2287743973036585426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929867049452260766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &3008980842341135862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,6 +2126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba74c3e27572e04ea3ef76f17cd5b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: f45f5d4ba206d404383dbe003415fe1e, type: 3}
   _spawnPoint: {fileID: 1274264366}
   _intervalBetweenShots: 0.4
@@ -2271,7 +2232,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7615371252550427135}
   - component: {fileID: 6135873757417621438}
-  - component: {fileID: 876299439597295956}
   m_Layer: 6
   m_Name: Stickman_heads_sphere
   m_TagString: Untagged
@@ -2375,24 +2335,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.030533075, y: 0.9071856, z: 0.11830276}
     m_Extent: {x: 0.4205171, y: 0.9766455, z: 0.3957712}
   m_DirtyAABB: 0
---- !u!114 &876299439597295956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418066450800898770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1650790639089068521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2765,7 +2707,6 @@ GameObject:
   - component: {fileID: 3559072220930085609}
   - component: {fileID: 3539642378762116693}
   - component: {fileID: 3547674095826341029}
-  - component: {fileID: 2035873661457201492}
   - component: {fileID: 6755137210845799457}
   m_Layer: 0
   m_Name: gun_e02
@@ -2840,24 +2781,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2035873661457201492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560628946983999295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &6755137210845799457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2870,6 +2793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54194dab93be20b41b2889d31fd4e066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 361749779}
   _intervalBetweenShots: 0.12
@@ -2915,7 +2839,6 @@ GameObject:
   - component: {fileID: 3798320799844967557}
   - component: {fileID: 3804785274747788627}
   - component: {fileID: 3812819604633457773}
-  - component: {fileID: 7029794793258267975}
   - component: {fileID: 2617327138538141835}
   m_Layer: 0
   m_Name: gun_c01
@@ -2989,24 +2912,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7029794793258267975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3799877930477769077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &2617327138538141835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3019,6 +2924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b903685b424d8046b30de99499a9af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: f45f5d4ba206d404383dbe003415fe1e, type: 3}
   _spawnPoint: {fileID: 803440910}
   _intervalBetweenShots: 0.5
@@ -3137,7 +3043,6 @@ GameObject:
   - component: {fileID: 5278043545231902039}
   - component: {fileID: 5279459061868725419}
   - component: {fileID: 5287475817129019163}
-  - component: {fileID: 8545983932804634698}
   - component: {fileID: 3408081564530846231}
   m_Layer: 0
   m_Name: gun_e01
@@ -3212,24 +3117,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8545983932804634698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5274516566763437237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &3408081564530846231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3242,6 +3129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a034a10b2e973c42ae8b9a71ded1728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 422813381}
   _intervalBetweenShots: 0.15
@@ -3463,7 +3351,6 @@ GameObject:
   - component: {fileID: 6307778872561212738}
   - component: {fileID: 6337325384842518868}
   - component: {fileID: 6329308900570685400}
-  - component: {fileID: 1169670250006863588}
   - component: {fileID: 7854759182980298190}
   m_Layer: 0
   m_Name: gun_e03
@@ -3538,24 +3425,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1169670250006863588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6306168726059356612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &7854759182980298190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,6 +3437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94ace4e86df8aa4e8aecc4f40aed7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 554246501}
   _intervalBetweenShots: 0.09
@@ -3708,7 +3578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7005515605888027098}
   m_LocalRotation: {x: 0.005272832, y: -0.70692277, z: 0.014971432, w: 0.70711267}
-  m_LocalPosition: {x: -0.0017922595, y: 0.55065, z: 0.043718427}
+  m_LocalPosition: {x: -0.0017902218, y: 0.55065, z: 0.043716386}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 7352208418223075375}
@@ -3759,7 +3629,6 @@ GameObject:
   - component: {fileID: 7044216705211424274}
   - component: {fileID: 7041691847131151448}
   - component: {fileID: 7033943512042718980}
-  - component: {fileID: 6811374683981433888}
   - component: {fileID: 8302820663930105835}
   m_Layer: 0
   m_Name: gun_c03
@@ -3833,24 +3702,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6811374683981433888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7048042951997934744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &8302820663930105835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3863,6 +3714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec5b73ea0fd7614e96fb99ce72cf1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: f45f5d4ba206d404383dbe003415fe1e, type: 3}
   _spawnPoint: {fileID: 1874288823}
   _intervalBetweenShots: 0.5
@@ -4072,7 +3924,6 @@ GameObject:
   - component: {fileID: 7298238460015123109}
   - component: {fileID: 7292319132845293393}
   - component: {fileID: 7284307037189047827}
-  - component: {fileID: 144619400757500972}
   - component: {fileID: 9204579951048458780}
   m_Layer: 0
   m_Name: gun_a03
@@ -4149,24 +4000,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &144619400757500972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297297366640956105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &9204579951048458780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4179,6 +4012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ba8b82bd5807c4cb13dd96418d8f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 333278876}
   _intervalBetweenShots: 0.3
@@ -4401,7 +4235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576427654212669500}
   m_LocalRotation: {x: 0.08720995, y: 0.68481725, z: 0.7204228, w: -0.06641326}
-  m_LocalPosition: {x: 0.010455991, y: -0.031163454, z: -0.028386544}
+  m_LocalPosition: {x: 0.010453132, y: -0.031163454, z: -0.028383687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7162220924139215347}
@@ -4563,7 +4397,6 @@ GameObject:
   - component: {fileID: 7984296292548239825}
   - component: {fileID: 7977813948283305481}
   - component: {fileID: 7967545807438347555}
-  - component: {fileID: 6715483276673298339}
   - component: {fileID: 2346030517706224031}
   m_Layer: 0
   m_Name: gun_a02
@@ -4640,24 +4473,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6715483276673298339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980470144617640037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &2346030517706224031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4670,6 +4485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cb57f27529b3140b94014dd6a46ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 0a5d543051cd06b41964f1b8bfb871c6, type: 3}
   _spawnPoint: {fileID: 8022043898887395675}
   _intervalBetweenShots: 0.2
@@ -5044,7 +4860,6 @@ GameObject:
   - component: {fileID: 8316622344737779252}
   - component: {fileID: 8291579214139198416}
   - component: {fileID: 8301559542800851170}
-  - component: {fileID: 5368374837335397544}
   - component: {fileID: 8998362008410306058}
   m_Layer: 0
   m_Name: gun_b03
@@ -5124,24 +4939,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5368374837335397544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8315663106984292248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &8998362008410306058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5154,6 +4951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d23c589c9910429c6f76ed1889bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 6043637ba75fec544b7dab587d65af04, type: 3}
   _spawnPoint:
   - {fileID: 552820936}
@@ -5653,7 +5451,6 @@ GameObject:
   - component: {fileID: 9000914919508178067}
   - component: {fileID: 8976418182173769193}
   - component: {fileID: 8986422820840289249}
-  - component: {fileID: 2347439306302602919}
   - component: {fileID: 7466862193480040627}
   m_Layer: 0
   m_Name: gun_b02
@@ -5732,24 +5529,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2347439306302602919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8999340029781647425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &7466862193480040627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5762,6 +5541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d5c86796b379a4f87a86eb40458493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
   _bulletPref: {fileID: 1632340825078092899, guid: 6043637ba75fec544b7dab587d65af04, type: 3}
   _spawnPoint:
   - {fileID: 1782702276}

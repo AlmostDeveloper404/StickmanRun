@@ -8,6 +8,8 @@ namespace Main
         [SerializeField] private GameObject[] _objectsToActivate;
         [SerializeField] private MonoBehaviour[] _behaviours;
 
+        [SerializeField] private bool _disableSelf = false;
+
         private void Awake()
         {
             Deactivate();
@@ -15,7 +17,6 @@ namespace Main
 
         public void Activate()
         {
-            Debug.Log("Yep");
             foreach (var obj in _objectsToActivate)
             {
                 obj.SetActive(true);
@@ -28,6 +29,8 @@ namespace Main
 
         public void Deactivate()
         {
+            if (_disableSelf) gameObject.SetActive(false);
+
             foreach (var obj in _objectsToActivate)
             {
                 obj.SetActive(false);

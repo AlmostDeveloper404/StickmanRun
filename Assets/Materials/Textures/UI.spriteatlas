@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 04063908f96e037429c519872240d8aa, type: 3}
+    - {fileID: 2800000, guid: ffb4ec8caab5bdf4d9371e084f9d34dd, type: 3}
+    - {fileID: 2800000, guid: 6af015fa3a36bca4da2f0ed03e6f8197, type: 3}
+    - {fileID: 2800000, guid: 6d0af32d0d4f03540a5a18ca4a427760, type: 3}
+    - {fileID: 2800000, guid: 9502f77e1ced77d45a17cb2a4b114b63, type: 3}
+    - {fileID: 2800000, guid: f749386fb2d9c1048ac7b39f2ac080fb, type: 3}
+    - {fileID: 2800000, guid: 78fefec3377468c4b992c5c5819e17bf, type: 3}
+    - {fileID: 2800000, guid: f6192b73f84250f43b87885031d05a3f, type: 3}
+    - {fileID: 2800000, guid: e53a6f9512ef17949a364a31c8038f7e, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f6192b73f84250f43b87885031d05a3f, type: 3}
+  - {fileID: 21300000, guid: 78fefec3377468c4b992c5c5819e17bf, type: 3}
+  - {fileID: 21300000, guid: e53a6f9512ef17949a364a31c8038f7e, type: 3}
+  - {fileID: 21300000, guid: 04063908f96e037429c519872240d8aa, type: 3}
+  - {fileID: 21300000, guid: 6af015fa3a36bca4da2f0ed03e6f8197, type: 3}
+  - {fileID: 21300000, guid: ffb4ec8caab5bdf4d9371e084f9d34dd, type: 3}
+  - {fileID: 21300000, guid: 6d0af32d0d4f03540a5a18ca4a427760, type: 3}
+  - {fileID: 21300000, guid: 9502f77e1ced77d45a17cb2a4b114b63, type: 3}
+  - {fileID: 21300000, guid: f749386fb2d9c1048ac7b39f2ac080fb, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - soundOffBtn
+  - pngwing.com (12)
+  - soundOnBtn
+  - 7247630
+  - blueBG
+  - backBtn
+  - lockIcon
+  - pngegg (9)
+  - pngegg (10)
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

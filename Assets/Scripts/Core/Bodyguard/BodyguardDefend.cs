@@ -22,7 +22,6 @@ namespace Main
 
         public override void UpdateState(Bodyguard bodyguard)
         {
-            Debug.Log(_enemy.IsAttacked);
             if (_enemy.IsAttacked)
             {
                 bodyguard.ChangeState(bodyguard.BodyguardSecureState);
