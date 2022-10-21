@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 519297512216468581}
   - {fileID: 1908167964277964096}
   _behaviours: []
+  _disableSelf: 0
 --- !u!1001 &519297513622980265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,6 +143,22 @@ PrefabInstance:
     - target: {fileID: 2112125488828562420, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
       propertyPath: _dropType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494561139773831213, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: LeftStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843297061085170, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: RightAreaCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843298819025773, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: Upper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843299058177840, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: RightStick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
@@ -214,9 +231,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2494561139773831213, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: LeftStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843297061085170, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: AreaCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3739843297061085174, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843298819025773, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: Upper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739843299058177840, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
+      propertyPath: m_Name
+      value: RightStick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dcd2ffd7b219034d82d8c07ea537aeb, type: 3}
