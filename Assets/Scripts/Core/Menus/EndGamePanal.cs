@@ -47,6 +47,7 @@ namespace Main
         private void Win()
         {
             _buttonText.text = "Ñontinue";
+            _gainedText.text = $"{_uiManager.GoldEarned}";
             _endButton.onClick.AddListener(() => GameManager.NextLevel());
             _endImage.color = _winColor;
             _endText.text = $"Level Completed!";
@@ -54,6 +55,7 @@ namespace Main
 
         private void Lost()
         {
+            _gainedText.text = $"+{_uiManager.GoldEarned}";
             _buttonText.text = "Retry?";
             _endButton.onClick.AddListener(() => GameManager.Restart());
             _endImage.color = _lostColor;

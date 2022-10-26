@@ -31,6 +31,9 @@ namespace Main
 
         private bool _isLost;
 
+        private int _goldInRun;
+        public int GoldEarned { get { return _goldInRun; } }
+
         public bool IsLost { get { return _isLost; } }
 
         [Inject]
@@ -43,6 +46,7 @@ namespace Main
 
         private void OnEnable()
         {
+            GameCurrency.OnGoldEarned += EarnedDuringLevel;
             GameCurrency.OnGoldAmountChanged += UpdateGold;
             GameManager.OnGameOver += GameOver;
             GameManager.OnStatedPreporations += StartPreporations;
@@ -52,6 +56,7 @@ namespace Main
 
         private void OnDisable()
         {
+            GameCurrency.OnGoldEarned -= EarnedDuringLevel;
             GameCurrency.OnGoldAmountChanged -= UpdateGold;
             GameManager.OnGameOver -= GameOver;
             GameManager.OnStatedPreporations -= StartPreporations;
@@ -92,7 +97,10 @@ namespace Main
             _currentOpenedPanal.gameObject.SetActive(true);
         }
 
-
+        private void EarnedDuringLevel(int amount)
+        {
+            _goldInRun += amount;
+        }
 
     }
 }

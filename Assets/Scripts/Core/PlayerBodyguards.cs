@@ -10,6 +10,8 @@ namespace Main
         [SerializeField] private List<Bodyguard> _activeBodyguards = new List<Bodyguard>();
         [SerializeField] private BodyguardPoint[] _bodyguardSpawnPoints;
 
+        [SerializeField] private Bodyguard[] _allBodyguards;
+
         private PlayerStats _playerStats;
 
         private ObjectPool<Bodyguard> _bodyGuards;
@@ -25,18 +27,19 @@ namespace Main
 
         private int _amountOfBodyguards;
 
-        private DiContainer _diContainer;
-
         [Inject]
         private void Construct(PlayerStats playerStats, DiContainer diContainer)
         {
             _playerStats = playerStats;
-            _diContainer = diContainer;
         }
 
         private void Start()
         {
-            _bodyGuards = new ObjectPool<Bodyguard>(_bodyguardPref, _diContainer);
+            _bodyGuards = new ObjectPool<Bodyguard>(_bodyguardPref);
+            for (int i = 0; i < _allBodyguards.Length; i++)
+            {
+                _bodyGuards.Push(_allBodyguards[i]);
+            }
         }
 
         private void OnEnable()
@@ -113,7 +116,7 @@ namespace Main
 
             for (int i = 0; i < amount; i++)
             {
-                Bodyguard bodyguard = _bodyGuards.PullZenject();
+                Bodyguard bodyguard = _bodyGuards.Pull();
                 bodyguard.transform.position = transform.position;
                 bodyguard.transform.parent = gameObject.transform;
                 _activeBodyguards.Add(bodyguard);

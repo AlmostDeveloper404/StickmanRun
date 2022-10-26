@@ -1075,6 +1075,12 @@ MonoBehaviour:
   - {fileID: 2301891437540044887}
   - {fileID: 8417179802266362325}
   - {fileID: 935866019637723183}
+  _allBodyguards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _bodyguardPref: {fileID: 5983707373160286851, guid: 891e32bfff9d8a842955b86a51758c6e, type: 3}
 --- !u!114 &7260560667219431755
 MonoBehaviour:

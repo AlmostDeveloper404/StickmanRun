@@ -1,5 +1,6 @@
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 namespace Main
 {
@@ -50,7 +51,19 @@ namespace Main
 
         public static void NextLevel()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            int nextLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            Debug.Log(nextLevelIndex);
+            Debug.Log(SceneManager.sceneCountInBuildSettings);
+            if (nextLevelIndex == SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
+
         }
     }
 }

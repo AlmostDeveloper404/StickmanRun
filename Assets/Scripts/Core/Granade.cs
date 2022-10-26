@@ -21,7 +21,6 @@ namespace Main
         [SerializeField] private AnimationCurve _granadeRotation;
 
         [SerializeField] private ParticleSystem _explosion;
-        [SerializeField] private ParticleSystem _boomParticles;
 
         [SerializeField] private float _damageRadius;
 
@@ -42,7 +41,6 @@ namespace Main
         public void Initialize(Action<Granade> returnAction)
         {
             _explosion.transform.parent = null;
-            _boomParticles.transform.parent = null;
 
             _timer = 0;
             _throwingProgress = 0;
@@ -88,8 +86,6 @@ namespace Main
         private void Explode()
         {
             _explosion.transform.position = transform.position + Vector3.up;
-            _boomParticles.transform.position = transform.position + Vector3.up;
-            _boomParticles.Play();
             _explosion.Play();
 
             Collider[] _allColliders = Physics.OverlapSphere(transform.position, _damageRadius);

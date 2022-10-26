@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
-
+using UnityEngine.SceneManagement;
 namespace Main
 {
     public enum EndType { BossFight, GoldCollect }
@@ -15,6 +15,9 @@ namespace Main
             if (other.GetComponent<PlayerController>())
             {
                 _collectGold.Play();
+                LevelProgression levelProgression = new LevelProgression();
+                levelProgression.CurrentLevel = SceneManager.GetActiveScene().buildIndex + 1;
+                SaveLoadProgress.SaveData<LevelProgression>(levelProgression, UniqSavingIdentefiers.LevelProgression);
                 GameManager.ChangeGameState(GameState.LevelCompleted);
             }
         }

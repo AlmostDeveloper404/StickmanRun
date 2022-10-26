@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 
 namespace Main
@@ -10,12 +9,27 @@ namespace Main
 
         public static event Action<int> OnGoldAmountChanged;
 
+        public static event Action<int> OnGoldEarned;
+
         public static int Gold { get { return _goldamount; } }
 
         public static void AddGold(int amount)
         {
+            OnGoldEarned?.Invoke(amount);
+
             _goldamount += amount;
 
+            GoldData goldData = new GoldData();
+            goldData.Gold = _goldamount;
+            Save(goldData);
+
+            OnGoldAmountChanged?.Invoke(_goldamount);
+
+        }
+
+        public static void RemoveGold(int amount)
+        {
+            _goldamount -= amount;
             GoldData goldData = new GoldData();
             goldData.Gold = _goldamount;
             Save(goldData);

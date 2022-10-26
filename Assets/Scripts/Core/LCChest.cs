@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Main
 {
     public class LCChest : MonoBehaviour
     {
-        [SerializeField] private int _amount;
+        private const int Amount = 10;
+
 
         public void CollectGold()
         {
-            GameCurrency.AddGold(_amount);
+            GameCurrency.AddGold(Amount * SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

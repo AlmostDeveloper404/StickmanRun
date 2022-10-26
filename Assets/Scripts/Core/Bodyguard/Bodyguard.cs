@@ -95,13 +95,13 @@ namespace Main
 
         private void UpdateState()
         {
-            _currentState.UpdateState(this);
+            _currentState?.UpdateState(this);
         }
 
         public void ChangeState(BodyguardBase bodyguardBase)
         {
             _currentState = bodyguardBase;
-            _currentState.EntryState(this);
+            _currentState?.EntryState(this);
         }
 
         public void Defend(Collider collider)
@@ -125,4 +125,5 @@ namespace Main
             _animator.enabled = false;
         }
     }
+
 }
