@@ -51,6 +51,7 @@ namespace Main
 
         public static void NextLevel()
         {
+            AppMetrica.Instance.SendEventsBuffer();
             int nextLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
             Debug.Log(nextLevelIndex);
             Debug.Log(SceneManager.sceneCountInBuildSettings);

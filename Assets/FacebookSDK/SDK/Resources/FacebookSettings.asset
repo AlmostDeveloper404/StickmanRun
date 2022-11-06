@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - 
+  - 67ed956bf0ddc9294551efc70ecb9d83
   appIds:
   - 513410433695691
   appLabels:
-  - App Name
+  - Stickman Way
   cookie: 1
   logging: 1
   status: 1

@@ -46,6 +46,7 @@ namespace Main
 
         private void Win()
         {
+            AppMetrica.Instance.SendEventsBuffer();
             _buttonText.text = "Ñontinue";
             _gainedText.text = $"{_uiManager.GoldEarned}";
             _endButton.onClick.AddListener(() => GameManager.NextLevel());

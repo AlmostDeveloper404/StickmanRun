@@ -8,6 +8,7 @@ namespace Main
     [Serializable]
     public struct LevelProgression
     {
+
         public int CurrentLevel;
     }
     public class SceneLoader : MonoBehaviour
@@ -16,6 +17,11 @@ namespace Main
         {
             LevelProgression levelProgression = SaveLoadProgress.LoadData<LevelProgression>(UniqSavingIdentefiers.LevelProgression);
             int levelIndex = levelProgression.Equals(default(LevelProgression)) ? 1 : levelProgression.CurrentLevel;
+            if (levelIndex == SceneManager.sceneCountInBuildSettings)
+            {
+                levelIndex = SceneManager.sceneCountInBuildSettings - 1;
+            }
+            AppMetrica.Instance.SendEventsBuffer();
             SceneManager.LoadSceneAsync(levelIndex);
         }
 
